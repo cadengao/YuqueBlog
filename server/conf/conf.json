@@ -1,0 +1,19 @@
+{
+  "server": {
+    "RunMode": "debug",
+    "HttpPort": 8000,
+    "ReadTimeout": 60,
+    "WriteTimeout": 60
+  },
+  "blog": {
+    "title": "iimT's Blog",
+    "subTitle": "Hpoe for the things unseen.",
+    "publicRepos": "cior8d,rcm7yh",
+    "friendLinks": [
+      {
+        "name":"google",
+        "link": "www.google.com"
+      }
+    ]
+  }
+}
