@@ -25,4 +25,4 @@ yarn-error.log*
 
 # server
 /server/yuque.log
-/server/*.exe
+/server/YuqueBlog.exe
