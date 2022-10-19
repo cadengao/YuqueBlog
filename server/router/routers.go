@@ -29,6 +29,7 @@ func InitRouters() *gin.Engine {
 	r.GET("/user", v1.GetUser)
 	r.GET("/repo", v1.GetRepo)
 	r.GET("/repoDocs", v1.GetDocListBySlug)
+	r.GET("/allDocs", v1.GetAllDoc)
 	r.GET("/docDetail", v1.GetDoc)
 	r.GET("/blog", v1.BlogInfo)
 

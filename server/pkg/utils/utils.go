@@ -1,6 +1,6 @@
 package utils
 
-func StrIncludes(arr []string, value interface{}) (bool) {
+func StrIncludes(value interface{}, arr []string) (bool) {
 	for _, v := range arr {
 		if v == value {
 			return true

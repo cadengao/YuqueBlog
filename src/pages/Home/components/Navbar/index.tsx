@@ -2,10 +2,11 @@
  * @Author: i1mT
  * @Date: 2022-10-19 09:34:51
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-19 09:46:42
+ * @LastEditTime: 2022-10-19 22:35:39
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Home\components\Navbar\index.tsx
  */
+import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 
 export default function Navbar() {
@@ -25,16 +26,14 @@ export default function Navbar() {
   ];
   return (
     <div className={styles.navbar}>
-      <div className={styles.left}>Blog</div>
+      <div className={styles.left}>
+        <Link to="/">Blog</Link>
+      </div>
       <div className={styles.right}>
-        {routes.map((r, index) => (
-          <div
-            className={styles.routeItem}
-            key={index}
-            onClick={() => (window.location.href = r.route)}
-          >
+        {routes.reverse().map((r, index) => (
+          <Link className={styles.routeItem} key={index} to={r.route}>
             {r.label}
-          </div>
+          </Link>
         ))}
       </div>
     </div>

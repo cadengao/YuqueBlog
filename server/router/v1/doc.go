@@ -2,7 +2,6 @@ package v1
 
 import (
 	"YuqueBlogServer/pkg/app"
-	"YuqueBlogServer/pkg/myyu"
 	"YuqueBlogServer/pkg/service"
 	"github.com/gin-gonic/gin"
 	"net/http"
@@ -17,14 +16,24 @@ func GetDocListBySlug(c *gin.Context)  {
 		return
 	}
 
-	docData, err := myyu.GetDocList(slug)
+	docList, err := service.GetDocListBySlug(slug)
 
 	if err != nil {
 		appG.Response(http.StatusInternalServerError, http.StatusInternalServerError, err)
 		return
 	}
 
-	appG.Response(http.StatusOK, http.StatusOK, docData.Data)
+	appG.Response(http.StatusOK, http.StatusOK, docList)
+}
+
+func GetAllDoc(c *gin.Context) {
+	appG := app.Gin{C: c}
+	repos, err := service.GetAllDoc()
+	if err != nil {
+		appG.Response(http.StatusInternalServerError, http.StatusInternalServerError, "repo list not found")
+	}
+
+	appG.Response(http.StatusOK, http.StatusOK, repos);
 }
 
 func GetDoc(c *gin.Context)  {

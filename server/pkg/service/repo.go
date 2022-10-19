@@ -42,7 +42,7 @@ func GetPublicRepos() (Data, error) {
 
 	// 筛出开放的repo
 	for _, value := range list {
-		if utils.StrIncludes(publicRepos, value.Slug) {
+		if utils.StrIncludes(value.Slug, publicRepos) {
 			ret = append(ret, value)
 		}
 	}
