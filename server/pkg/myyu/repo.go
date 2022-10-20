@@ -2,11 +2,9 @@ package myyu
 
 import (
 	"github.com/wujiyu115/yuqueg"
-	"log"
 )
 
 func GetRepoList() (yuqueg.UserRepos, error)  {
-	log.Println(yuConfig.User)
 	list, err := yu.Repo.List(yuConfig.User, "", nil)
 
 	if err != nil {
@@ -14,4 +12,14 @@ func GetRepoList() (yuqueg.UserRepos, error)  {
 	}
 
 	return list, nil
+}
+
+func GetRepo(slug string) (yuqueg.CreateUserRepo, error) {
+	repo, err := yu.Repo.Get(yuConfig.User + "/" + slug, "Book")
+
+	if err != nil {
+		return repo, err
+	}
+
+	return repo, nil
 }

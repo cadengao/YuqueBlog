@@ -1,7 +1,6 @@
 package myyu
 
 import (
-	"fmt"
 	"github.com/wujiyu115/yuqueg"
 )
 
@@ -11,7 +10,6 @@ import (
 func GetUserInfo() (userInfo yuqueg.User, err error)  {
 	user, err := yu.User.Get(yuConfig.User)
 	if err != nil {
-		fmt.Println("登录失败", err)
 		return user.Data, err
 	}
 	return user.Data, nil

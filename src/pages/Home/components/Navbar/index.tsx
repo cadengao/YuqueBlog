@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-19 09:34:51
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-19 22:35:39
+ * @LastEditTime: 2022-10-20 22:22:16
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Home\components\Navbar\index.tsx
  */
@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <div className={styles.navbar}>
       <div className={styles.left}>
-        <Link to="/">Blog</Link>
+        <Link to="/">iimT's Blog</Link>
       </div>
       <div className={styles.right}>
         {routes.reverse().map((r, index) => (

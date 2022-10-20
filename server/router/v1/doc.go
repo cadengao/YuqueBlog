@@ -33,7 +33,7 @@ func GetAllDoc(c *gin.Context) {
 		appG.Response(http.StatusInternalServerError, http.StatusInternalServerError, "repo list not found")
 	}
 
-	appG.Response(http.StatusOK, http.StatusOK, repos);
+	appG.Response(http.StatusOK, http.StatusOK, repos)
 }
 
 func GetDoc(c *gin.Context)  {
@@ -41,7 +41,7 @@ func GetDoc(c *gin.Context)  {
 	repoSlug := appG.C.Query("repoSlug")
 	slug := appG.C.Query("slug")
 
-	ret, err := service.GetDocBySlug(repoSlug, slug)
+	ret, err := service.GetDocDetailBySlug(repoSlug, slug)
 	if err != nil {
 		appG.Response(http.StatusInternalServerError, http.StatusInternalServerError, err)
 		return

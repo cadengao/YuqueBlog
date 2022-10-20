@@ -14,7 +14,7 @@ func GetDocList(repoSlug string) (yuqueg.BookDetail, error) {
 	return docData, nil
 }
 
-func GetDoc(repoSlug string, docSlug string) (yuqueg.DocDetail, error) {
+func GetDocDetail(repoSlug string, docSlug string) (yuqueg.DocDetail, error) {
 	d, err := yu.Doc.Get(yuConfig.User + "/" + repoSlug, docSlug, &yuqueg.DocGet{Raw: 1})
 
 	if err != nil {
@@ -22,5 +22,4 @@ func GetDoc(repoSlug string, docSlug string) (yuqueg.DocDetail, error) {
 	}
 
 	return d, nil
-
 }
