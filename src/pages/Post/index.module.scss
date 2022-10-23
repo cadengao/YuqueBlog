@@ -1,0 +1,18 @@
+@import "/src/const/styles.scss";
+.posts {
+  .empty {
+    font-size: $fontSizeSmall;
+    color: $black5;
+    text-align: center;
+  }
+  .more {
+    margin: 0 auto;
+    width: $amount5;
+    padding: $amount2;
+    font-size: $fontSizeSmall;
+    background-color: $black4;
+    text-align: center;
+    color: $black12;
+    cursor: pointer;
+  }
+}

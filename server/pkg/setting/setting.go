@@ -18,11 +18,16 @@ type FriendLink struct {
 	Name string `json:"name"`
 	Link string `json:"link"`
 }
+type SocialLink struct {
+	Img string `json:"img"`
+	Link string `json:"link"`
+}
 type Blog struct {
 	Title string 			`json:"title"`
-	SubTitle string 		`json:"subTitle"`
-	PublicRepos string 		`json:"publicRepos"`
-	FriendLinks []FriendLink `json:"friendLinks"`
+	SubTitle string 		`json:"sub_title"`
+	PublicRepos string 		`json:"public_repos"`
+	FriendLinks []FriendLink `json:"friend_links"`
+	SocialLinks []SocialLink `json:"social_links"`
 }
 type Config struct {
 	Server 	Server 		`json:"server"`

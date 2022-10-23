@@ -1,0 +1,60 @@
+@import "/src/const/styles.scss";
+
+.postCard {
+  display: flex;
+  flex-direction: row;
+  height: $amount7;
+  background-color: $black10;
+  margin-bottom: $amount4;
+
+  .cover {
+    flex: 0 0 $amount7;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: $amount1 $amount2;
+
+    .time {
+      font-size: $fontSizeSmaller;
+      font-weight: $fontWeightLite;
+      padding: 8px 0;
+    }
+
+    .title {
+      font-size: $fontSizeLarge;
+      display: flex;
+      align-items: center;
+    }
+    .description {
+      font-size: $fontSizeSmaller;
+      color: $black5;
+      margin-top: $amount1;
+      line-height: $lineHeightNormal;
+    }
+
+    .statics {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 0.5px solid $black8;
+      color: $black5;
+      font-size: $fontSizeSmaller;
+      span {
+        margin-right: $amount1;
+      }
+    }
+    .dot {
+      padding: 0 $amount1;
+    }
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+}

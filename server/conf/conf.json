@@ -6,10 +6,24 @@
     "WriteTimeout": 60
   },
   "blog": {
-    "title": "iimT's Blog",
-    "subTitle": "Hpoe for the things unseen.",
-    "publicRepos": "cior8d,rcm7yh",
-    "friendLinks": [
+    "title": "Hope in the things unseen.",
+    "sub_title": "technology sharing & digital knowledge base.",
+    "public_repos": "cior8d,rcm7yh",
+    "social_links": [
+      {
+        "img": "http://rjuhs1s8m.hd-bkt.clouddn.com/bilibili-line.png",
+        "link": "https://space.bilibili.com/69824765"
+      },
+      {
+        "img": "http://rjuhs1s8m.hd-bkt.clouddn.com/zhihu.png",
+        "link": "https://www.zhihu.com/people/tao-feng-hua"
+      },
+      {
+        "img": "http://rjuhs1s8m.hd-bkt.clouddn.com/github.png",
+        "link": "https://github.com/i1mT"
+      }
+    ],
+    "friend_links": [
       {
         "name":"google",
         "link": "www.google.com"

@@ -15,7 +15,9 @@ func GetDocListBySlug(slug string) ([]yuqueg.DocBookDetail, error) {
 	if err != nil {
 		return docData.Data, err
 	}
-	return docData.Data, nil
+	return utils.FilterDocBookDetailSlice(docData.Data, func (d yuqueg.DocBookDetail) bool {
+		return d.Status == 1
+	}), nil
 }
 
 func GetDocDetailBySlug(repoSlug string, docSlug string) (yuqueg.DocDetail, error) {
@@ -64,6 +66,7 @@ func GetAllDoc() ([]yuqueg.DocBookDetail, error) {
 		if err != nil {
 			return ret, err
 		}
+		// 过滤未发布的
 		ret = append(ret, utils.FilterDocBookDetailSlice(doc.Data, func (d yuqueg.DocBookDetail) bool {
 			return d.Status == 1
 		})...)
@@ -92,7 +95,14 @@ func GetAllDocsGroupByRepo() ([]RepoDocs, error) {
 		}
 		rr := RepoDocs{}
 		rr.Repo = repoData.Data
-		rr.Docs = docData.Data
+		// 过滤未发布的
+		rr.Docs = utils.FilterDocBookDetailSlice(docData.Data, func (d yuqueg.DocBookDetail) bool {
+			return d.Status == 1
+		})
+		utils.SortDocBookDetail(rr.Docs, func (i, j int) bool {
+			// 先发布的在后
+			return rr.Docs[i].FirstPublishedAt.Unix() > rr.Docs[j].FirstPublishedAt.Unix()
+		})
 		ret = append(ret, rr)
 	}
 	return ret, nil

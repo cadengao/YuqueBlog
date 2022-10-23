@@ -1,0 +1,13 @@
+@import "/src/const/styles.scss";
+
+.scrollToTop {
+  position: fixed;
+  right: $intervalLarger;
+  bottom: $amount6;
+  cursor: pointer;
+  
+  svg {
+    width: $amount4;
+    height: $amount4;
+  }
+}

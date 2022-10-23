@@ -2,22 +2,24 @@
  * @Author: i1mT
  * @Date: 2022-10-19 09:34:51
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-20 22:22:16
+ * @LastEditTime: 2022-10-23 14:59:35
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Home\components\Navbar\index.tsx
  */
 import { Link } from "react-router-dom";
+import BooksMenu from "./BooksMenu";
 import styles from "./index.module.scss";
 
 export default function Navbar() {
   const routes = [
     {
       label: "All Post",
-      route: "/posts",
+      route: "/",
     },
     {
-      label: "Tags",
-      route: "/tags",
+      label: "Books",
+      route: "/books",
+      hoverElement: BooksMenu,
     },
     {
       label: "About",
@@ -30,11 +32,22 @@ export default function Navbar() {
         <Link to="/">iimT's Blog</Link>
       </div>
       <div className={styles.right}>
-        {routes.reverse().map((r, index) => (
-          <Link className={styles.routeItem} key={index} to={r.route}>
-            {r.label}
-          </Link>
-        ))}
+        {routes.reverse().map((r, index) => {
+          const Hover = r.hoverElement;
+          if (Hover) {
+            return (
+              <div key={index} className={styles.routeItem}>
+                {r.label}
+                <Hover className={styles.hoverElement} />
+              </div>
+            );
+          }
+          return (
+            <div key={index} className={styles.routeItem}>
+              <Link to={r.route}>{r.label}</Link>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

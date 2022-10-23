@@ -26,12 +26,22 @@ func InitRouters() *gin.Engine {
 	}))
 
 	// GET
-	r.GET("/user", v1.GetUser)
-	r.GET("/repo", v1.GetRepo)
-	r.GET("/repoDocs", v1.GetDocListBySlug)
-	r.GET("/allDocs", v1.GetAllDoc)
-	r.GET("/docDetail", v1.GetDoc)
-	r.GET("/blog", v1.BlogInfo)
+	r.GET("/blog/info", v1.BlogInfo)
+
+	// repo
+	repo := r.Group("/repo")
+	{
+		repo.GET("/all", v1.GetRepo)
+		repo.GET("/:slug/docs", v1.GetDocListBySlug)
+	}
+
+	// doc
+	doc := r.Group("/doc")
+	{
+		doc.GET("/all", v1.GetAllDoc)
+		doc.GET("/all/groupRepo", v1.GetAllDocsGroupByRepo)
+		doc.GET("/:slug/detail", v1.GetDoc)
+	}
 
 	return r
 }
