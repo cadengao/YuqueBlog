@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-23 15:10:24
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-25 09:06:27
+ * @LastEditTime: 2022-10-26 00:27:55
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Post\components\PostCard\index.tsx
  */
@@ -52,17 +52,14 @@ export default function PostCard(props: IProps) {
         </Link>
         <div className={styles.description}>{post.description}</div>
         <div className={styles.statics}>
-          <span>
-            {post.word_count} word{post.word_count > 1 ? "s" : ""}
-          </span>
+          <span>{post.word_count} 字</span>
           <span className={styles.dot}>·</span>
-          <span>
-            {post.likes_count} like{post.likes_count > 1 ? "s" : ""}
-          </span>
+          <span>阅读 {Math.ceil(post.word_count / 300)} 分钟</span>
           <span className={styles.dot}>·</span>
-          <span>
-            {post.comments_count} comment{post.comments_count > 1 ? "s" : ""}
-          </span>
+
+          <span>{post.likes_count} 喜欢</span>
+          <span className={styles.dot}>·</span>
+          <span>{post.comments_count} 评论</span>
           <span className={styles.dot}>·</span>
           <a
             href={`https://www.yuque.com/iimt/${repo}/${post.slug}`}

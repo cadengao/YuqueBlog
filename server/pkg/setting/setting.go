@@ -25,6 +25,7 @@ type SocialLink struct {
 type Blog struct {
 	Title string 			`json:"title"`
 	SubTitle string 		`json:"sub_title"`
+	Cover string 			`json:"cover"`
 	PublicRepos string 		`json:"public_repos"`
 	FriendLinks []FriendLink `json:"friend_links"`
 	SocialLinks []SocialLink `json:"social_links"`

@@ -4,7 +4,7 @@ import React from "react";
  * @Author: i1mT
  * @Date: 2022-10-22 21:22:25
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-25 09:19:36
+ * @LastEditTime: 2022-10-25 23:47:47
  * @Description:
  * @FilePath: \YuqueBlog\src\types\blog.d.ts
  */
@@ -19,6 +19,7 @@ export interface SocialLink {
 export interface BlogSettings {
   title: string;
   sub_title: string;
+  cover: string;
   public_repos: string;
   social_links: SocialLink[];
   friend_link: FriendLink[];
@@ -78,6 +79,7 @@ export interface Post {
 export interface HomeHeader {
   title?: string;
   subtitle?: string;
+  cover: string;
   slot?: React.ReactNode;
 }
 
@@ -88,4 +90,14 @@ export interface PostDetail {
   title: string;
   description: string;
   body_html: string;
+  likes_count: number;
+  comments_count: number;
+  content_updated_at: string;
+  created_at: string;
+  updated_at: string;
+  published_at: string;
+  draft_version: number;
+  last_editor_id: number;
+  word_count: number;
+  cover: string;
 }

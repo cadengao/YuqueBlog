@@ -1,0 +1,43 @@
+@import "/src/const/styles.scss";
+
+.postSlot {
+  display: flex;
+  flex-direction: row;
+  margin-top: $amount2;
+  .info {
+    font-size: $fontSizeSmaller;
+  }
+  .statistics {
+    margin-top: $amount1;
+  }
+  .item {
+    background: rgba(255, 255, 255, .2);
+    border-radius: 2px;
+    padding: 0 $amount1;
+    margin-left: $amount1;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .statics {
+    margin-top: $amount1;
+  }
+  .yuque {
+    margin-top: $amount1;
+
+    a {
+      color: #fff;
+      background: rgba(255, 255, 255, .2);
+      border-radius: 2px;
+      padding: 0 $amount1;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+    
+  }
+}

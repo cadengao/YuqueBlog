@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-18 23:09:57
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-25 10:06:16
+ * @LastEditTime: 2022-10-25 23:52:18
  * @Description: Home
  * @FilePath: \YuqueBlog\src\pages\Home\index.tsx
  */
@@ -18,12 +18,16 @@ import { HomeHeader } from "@/types/blog";
 export default function Home() {
   const blogInfo = useContext(BlogInfoContext);
   const params = useParams();
-  const [homeHeader, setHomeHeader] = useState<HomeHeader>();
+  const [homeHeader, setHomeHeader] = useState<HomeHeader>({
+    cover:
+      "https://static.wixstatic.com/media/0b340f_b3e8595169574d4098fbe2dee7b2fda1~mv2.jpg/v1/fill/w_2372,h_933,al_c,q_90,enc_auto/0b340f_b3e8595169574d4098fbe2dee7b2fda1~mv2.jpg",
+  });
 
   const updateHomeHeader = () => {
     setHomeHeader({
       title: blogInfo?.settings.title,
       subtitle: blogInfo?.settings.sub_title,
+      cover: blogInfo?.settings.cover!,
       slot: (
         <div className={styles.links}>
           {blogInfo?.settings.social_links.map((link, index) => (
@@ -48,7 +52,7 @@ export default function Home() {
   return (
     <div className={styles.home}>
       <NavBar />
-      <div className={styles.page}>
+      <div className={styles.page} id="scrollEl">
         <div className={styles.cover}>
           <div className={styles.content}>
             <div
@@ -66,7 +70,10 @@ export default function Home() {
           </div>
           <img
             className={styles.coverImg}
-            src="https://static.wixstatic.com/media/0b340f_b3e8595169574d4098fbe2dee7b2fda1~mv2.jpg/v1/fill/w_2372,h_933,al_c,q_90,enc_auto/0b340f_b3e8595169574d4098fbe2dee7b2fda1~mv2.jpg"
+            src={homeHeader.cover || blogInfo?.settings.cover}
+            onError={() =>
+              setHomeHeader((v) => ({ ...v, cover: blogInfo?.settings.cover! }))
+            }
           />
         </div>
         <div className={styles.main}>

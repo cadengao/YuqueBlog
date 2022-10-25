@@ -26,7 +26,7 @@ $postCardHeight: 180px;
     .time {
       font-size: $fontSizeSmaller;
       font-weight: $fontWeightLite;
-      padding: 10px 0;
+      padding: 10px 0 6px 0;
     }
 
     .title {
@@ -38,7 +38,14 @@ $postCardHeight: 180px;
       font-size: $fontSizeSmaller;
       color: $black5;
       margin-top: $amount1;
-      line-height: $lineHeightNormal;
+      line-height: 1.6;
+      line-clamp: 3;
+      text-overflow: ellipsis;
+      box-orient: vertical;
+      display: -webkit-box;
+      overflow: hidden;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
 
     .statics {

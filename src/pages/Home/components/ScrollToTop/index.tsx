@@ -1,7 +1,15 @@
+/*
+ * @Author: i1mT
+ * @Date: 2022-10-23 15:06:14
+ * @LastEditors: i1mT
+ * @LastEditTime: 2022-10-25 23:41:53
+ * @Description:
+ * @FilePath: \YuqueBlog\src\pages\Home\components\ScrollToTop\index.tsx
+ */
 import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
 
-const MAX_SCROLL_HEIGHT = 800;
+const MAX_SCROLL_HEIGHT = 1700;
 
 const Top = () => (
   <svg
@@ -25,16 +33,20 @@ export default function ScrollToTop() {
 
   const onPageScroll = () => {
     // 先不用防抖了
-    if (window.document.documentElement.scrollTop > MAX_SCROLL_HEIGHT)
+    const scrollEl = document.querySelector("#scrollEl");
+    if (!scrollEl) return;
+    if (scrollEl.scrollTop > MAX_SCROLL_HEIGHT) {
       setShow(true);
-    else setShow(false);
+    } else setShow(false);
   };
 
   const toTop = () => {
     // 开始时间
     const beginTime = Date.now();
     // 初始位置
-    const beginValue = document.documentElement.scrollTop;
+    const scrollEl = document.querySelector("#scrollEl");
+    if (!scrollEl) return;
+    const beginValue = scrollEl.scrollTop;
     const cubic = (value: number) => Math.pow(value, 3);
 
     const easeInOutCubic = (value: number) =>
@@ -46,19 +58,19 @@ export default function ScrollToTop() {
       const progress = (Date.now() - beginTime) / 500;
       if (progress < 1) {
         // 根据进度修改 scrollTop 的值
-        document.documentElement.scrollTop =
-          beginValue * (1 - easeInOutCubic(progress));
+        scrollEl.scrollTop = beginValue * (1 - easeInOutCubic(progress));
         rAF(frameFunc);
       } else {
-        document.documentElement.scrollTop = 0;
+        scrollEl.scrollTop = 0;
       }
     };
     rAF(frameFunc);
   };
 
   useEffect(() => {
-    window.document.addEventListener("scroll", onPageScroll);
-    return () => window.document.removeEventListener("scroll", onPageScroll);
+    const scrollEl = document.querySelector("#scrollEl");
+    scrollEl?.addEventListener("scroll", onPageScroll);
+    return () => scrollEl?.removeEventListener("scroll", onPageScroll);
   }, []);
 
   if (!show) return null;
