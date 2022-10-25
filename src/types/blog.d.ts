@@ -1,8 +1,10 @@
+import React from "react";
+
 /*
  * @Author: i1mT
  * @Date: 2022-10-22 21:22:25
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-23 17:19:07
+ * @LastEditTime: 2022-10-25 09:19:36
  * @Description:
  * @FilePath: \YuqueBlog\src\types\blog.d.ts
  */
@@ -70,4 +72,20 @@ export interface Post {
   cover: string;
   custom_description: string;
   last_editor: User;
+  repo: string;
+}
+
+export interface HomeHeader {
+  title?: string;
+  subtitle?: string;
+  slot?: React.ReactNode;
+}
+
+export interface PostDetail {
+  id: number;
+  body: string;
+  slug: string;
+  title: string;
+  description: string;
+  body_html: string;
 }

@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-18 23:08:34
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-23 13:27:25
+ * @LastEditTime: 2022-10-25 09:07:25
  * @Description: router
  * @FilePath: \YuqueBlog\src\route.tsx
  */
@@ -11,6 +11,7 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import NotFound from "@/pages/404";
 import Post from "@/pages/Post";
+import Detail from "@/pages/Detail";
 
 export default createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export default createBrowserRouter([
       {
         path: "/books/:repo",
         element: <Post />,
+      },
+      {
+        path: "/doc/:repo/:doc",
+        element: <Detail />,
       },
       {
         path: "/about",

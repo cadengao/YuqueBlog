@@ -1,14 +1,16 @@
 @import "/src/const/styles.scss";
 
+$postCardHeight: 180px;
+
 .postCard {
   display: flex;
   flex-direction: row;
-  height: $amount7;
-  background-color: $black10;
+  height: $postCardHeight;
+  background-color: $black11;
   margin-bottom: $amount4;
 
   .cover {
-    flex: 0 0 $amount7;
+    flex: 0 0 $postCardHeight;
     img {
       width: 100%;
       height: 100%;
@@ -24,7 +26,7 @@
     .time {
       font-size: $fontSizeSmaller;
       font-weight: $fontWeightLite;
-      padding: 8px 0;
+      padding: 10px 0;
     }
 
     .title {
@@ -40,13 +42,16 @@
     }
 
     .statics {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 0.5px solid $black8;
+      margin-top: $amount2;
+      padding-top: $amount2;
+      border-top: 0.5px solid $black9;
       color: $black5;
       font-size: $fontSizeSmaller;
       span {
         margin-right: $amount1;
+      }
+      a {
+        color: $black5;
       }
     }
     .dot {

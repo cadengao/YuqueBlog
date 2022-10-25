@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-23 13:25:36
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-23 17:16:44
+ * @LastEditTime: 2022-10-25 09:06:17
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Post\index.tsx
  */
@@ -27,7 +27,6 @@ export default function Post() {
     }
 
     fetch.get(path).then((res) => {
-      console.log(res);
       setPosts(res.data?.data);
       setPage(1);
     });
@@ -54,7 +53,7 @@ export default function Post() {
     <div className={styles.posts}>
       {maxLen ? (
         renderedPosts.map((post, index) => (
-          <PostCard key={post.id} index={index} post={post} />
+          <PostCard key={post.id} repo={post.repo} index={index} post={post} />
         ))
       ) : (
         <div className={styles.empty}>这个人很懒，还什么都没有写</div>

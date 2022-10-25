@@ -7606,7 +7606,7 @@
   "resolved" "https://r2.cnpmjs.org/oauth-sign/-/oauth-sign-0.9.0.tgz"
   "version" "0.9.0"
 
-"object-assign@^4.0.1", "object-assign@^4.1.0", "object-assign@^4.1.1":
+"object-assign@^4.0.1", "object-assign@^4.1.0", "object-assign@^4.1.1", "object-assign@>=4.0.1":
   "integrity" "sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM= sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg=="
   "resolved" "https://r2.cnpmjs.org/object-assign/-/object-assign-4.1.1.tgz"
   "version" "4.1.1"
@@ -8656,6 +8656,14 @@
     "postcss" "^7.0.2"
     "postcss-selector-parser" "^5.0.0-rc.3"
 
+"postcss-px-to-viewport@^1.1.1":
+  "integrity" "sha512-2x9oGnBms+e0cYtBJOZdlwrFg/mLR4P1g2IFu7jYKvnqnH/HLhoKyareW2Q/x4sg0BgklHlP1qeWo2oCyPm8FQ=="
+  "resolved" "https://r2.cnpmjs.org/postcss-px-to-viewport/-/postcss-px-to-viewport-1.1.1.tgz"
+  "version" "1.1.1"
+  dependencies:
+    "object-assign" ">=4.0.1"
+    "postcss" ">=5.0.2"
+
 "postcss-reduce-initial@^4.0.3":
   "integrity" "sha512-gKWmR5aUulSjbzOfD9AlJiHCGH6AEVLaM0AV+aSioxUDd16qXP1PCh8d1/BGVvpdWn8k/HiK7n6TjeoXN1F7DA=="
   "resolved" "https://r2.cnpmjs.org/postcss-reduce-initial/-/postcss-reduce-initial-4.0.3.tgz"
@@ -8781,7 +8789,7 @@
     "indexes-of" "^1.0.1"
     "uniq" "^1.0.1"
 
-"postcss@^7", "postcss@^7.0.0", "postcss@^7.0.1", "postcss@^7.0.14", "postcss@^7.0.17", "postcss@^7.0.2", "postcss@^7.0.26", "postcss@^7.0.27", "postcss@^7.0.32", "postcss@^7.0.5", "postcss@^7.0.6":
+"postcss@^7", "postcss@^7.0.0", "postcss@^7.0.1", "postcss@^7.0.14", "postcss@^7.0.17", "postcss@^7.0.2", "postcss@^7.0.26", "postcss@^7.0.27", "postcss@^7.0.32", "postcss@^7.0.5", "postcss@^7.0.6", "postcss@>=5.0.2":
   "integrity" "sha512-3QT8bBJeX/S5zKTTjTCIjRF3If4avAT6kqxcASlTWEtAFCb9NH0OUxNDfgZSWdP5fJnBYCMEWkIFfWeugjzYMg=="
   "resolved" "https://r2.cnpmjs.org/postcss/-/postcss-7.0.35.tgz"
   "version" "7.0.35"

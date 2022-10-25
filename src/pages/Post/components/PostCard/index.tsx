@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-23 15:10:24
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-23 18:20:24
+ * @LastEditTime: 2022-10-25 09:06:27
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Post\components\PostCard\index.tsx
  */
@@ -14,6 +14,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 interface IProps {
   post: Post;
+  repo?: string;
   index: number;
 }
 const DEFAULT_COVER = "http://rjuhs1s8m.hd-bkt.clouddn.com/unnamed.png";
@@ -32,7 +33,7 @@ function formatTime(time: string, type: ITimeFormatType) {
   return type === ITimeFormatType.exact ? exact(time) : latest(time);
 }
 export default function PostCard(props: IProps) {
-  const { post, index } = props;
+  const { post, index, repo } = props;
   return (
     <div className={`${styles.postCard} ${index % 2 ? styles.reverse : ""}`}>
       <div className={styles.cover}>
@@ -46,7 +47,7 @@ export default function PostCard(props: IProps) {
           <span className={styles.dot}>·</span>
           {formatTime(post.published_at, ITimeFormatType.latest)}
         </div>
-        <Link to={`/doc/${post.slug}`} className={styles.title}>
+        <Link to={`/doc/${post.repo}/${post.slug}`} className={styles.title}>
           {post.title}
         </Link>
         <div className={styles.description}>{post.description}</div>
@@ -59,10 +60,16 @@ export default function PostCard(props: IProps) {
             {post.likes_count} like{post.likes_count > 1 ? "s" : ""}
           </span>
           <span className={styles.dot}>·</span>
-
           <span>
             {post.comments_count} comment{post.comments_count > 1 ? "s" : ""}
           </span>
+          <span className={styles.dot}>·</span>
+          <a
+            href={`https://www.yuque.com/iimt/${repo}/${post.slug}`}
+            target="_blank"
+          >
+            Read in Yuque
+          </a>
         </div>
       </div>
     </div>
