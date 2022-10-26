@@ -33,7 +33,7 @@
       margin-left: 20px;
       cursor: pointer;
       position: relative;
-      
+
       // 因为这个是 row-reverse，所以 last 才是第一个
       &:last-of-type {
         margin-left: 0;
@@ -46,6 +46,15 @@
         .hoverElement {
           display: block;
         }
+      }
+    }
+    .switch {
+      cursor: pointer;
+      .switchOption {
+        background-color: $black6;
+      }
+      .switchActive {
+        background-color: $black12;
       }
     }
   }

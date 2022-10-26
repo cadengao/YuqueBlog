@@ -4,9 +4,9 @@ import React from "react";
  * @Author: i1mT
  * @Date: 2022-10-22 21:22:25
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-26 10:09:03
+ * @LastEditTime: 2022-10-27 00:45:47
  * @Description:
- * @FilePath: \YuqueBlog\src\types\blog.d.ts
+ * @FilePath: \YuqueBlog\src\types\blog.ts
  */
 export interface FriendLink {
   name: string;
@@ -75,12 +75,16 @@ export interface Post {
   last_editor: User;
   repo: string;
 }
-
-export interface HomeHeader {
+export enum Lang {
+  cn = "cn",
+  en = "en",
+}
+export interface GlobalState {
   title?: string;
   subtitle?: string;
   cover: string;
   slot?: React.ReactNode;
+  lang: Lang;
 }
 
 export interface PostDetail {

@@ -2,24 +2,24 @@
  * @Author: i1mT
  * @Date: 2022-10-24 09:14:33
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-26 10:14:29
+ * @LastEditTime: 2022-10-27 00:31:48
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Detail\index.tsx
  */
 
 import fetch from "@/request/fetch";
-import { PostDetail } from "@/types/blog";
+import { GlobalState, PostDetail } from "@/types/blog";
 import { useEffect, useState } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import PostSlot from "./PostSlot";
 import styles from "./index.module.scss";
-import themeStyles from "./markdown.module.scss";
-import { marked } from "marked";
+import { IGlobalContext } from "../Home";
 
 export default function Detail() {
   const { doc, repo } = useParams();
-  const [homeHeader, setHomeHeader] = useOutletContext();
+  const [globalState, setGlobalState] = useOutletContext<IGlobalContext>();
   const [postDetail, setPostDetail] = useState<PostDetail>();
+  const [iframeHeight, setIframeHeight] = useState<number>(300);
   const getDetail = () => {
     fetch.get(`/doc/${doc}/detail?repo=${repo}`).then((res) => {
       setPostDetail(res.data?.data?.data);
@@ -31,20 +31,37 @@ export default function Detail() {
 
   useEffect(() => {
     if (!postDetail || !repo) return;
-    setHomeHeader({
+    setGlobalState((state) => ({
+      ...state,
       title: postDetail?.title,
       subtitle: "",
       cover: postDetail?.cover,
       slot: <PostSlot post={postDetail} repo={repo} />,
-    });
+    }));
   }, [postDetail, repo]);
-
+  useEffect(() => {
+    window.addEventListener(
+      "message",
+      (event) => {
+        if (
+          event.data?.type !== "doc_ready" &&
+          event.data?.type !== "doc_height_change"
+        )
+          return;
+        const { payload } = event.data;
+        setIframeHeight(payload.height || 300);
+      },
+      false
+    );
+  }, []);
   return (
-    <article
-      className={themeStyles.article}
-      dangerouslySetInnerHTML={{
-        __html: marked.parse(postDetail?.body || ""),
+    <iframe
+      className={styles.iframe}
+      style={{
+        height: `${iframeHeight * 1.5}px`,
       }}
-    ></article>
+      name="article"
+      src={`https://www.yuque.com/iimt/${repo}/${doc}?view=doc_embed&from=iimt_blog&outline=1&translate=${globalState.lang}`}
+    ></iframe>
   );
 }
