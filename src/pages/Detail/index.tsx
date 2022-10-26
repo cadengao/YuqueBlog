@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-24 09:14:33
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-26 00:45:11
+ * @LastEditTime: 2022-10-26 10:14:29
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Detail\index.tsx
  */
@@ -12,6 +12,9 @@ import { PostDetail } from "@/types/blog";
 import { useEffect, useState } from "react";
 import { useOutletContext, useParams } from "react-router-dom";
 import PostSlot from "./PostSlot";
+import styles from "./index.module.scss";
+import themeStyles from "./markdown.module.scss";
+import { marked } from "marked";
 
 export default function Detail() {
   const { doc, repo } = useParams();
@@ -27,16 +30,21 @@ export default function Detail() {
   }, [doc, repo]);
 
   useEffect(() => {
+    if (!postDetail || !repo) return;
     setHomeHeader({
       title: postDetail?.title,
       subtitle: "",
       cover: postDetail?.cover,
       slot: <PostSlot post={postDetail} repo={repo} />,
     });
-  }, [postDetail]);
+  }, [postDetail, repo]);
+
   return (
     <article
-      dangerouslySetInnerHTML={{ __html: postDetail?.body_html || "" }}
+      className={themeStyles.article}
+      dangerouslySetInnerHTML={{
+        __html: marked.parse(postDetail?.body || ""),
+      }}
     ></article>
   );
 }

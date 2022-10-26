@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-25 09:17:48
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-26 00:46:36
+ * @LastEditTime: 2022-10-26 08:52:47
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Detail\PostSlot\index.tsx
  */
@@ -11,7 +11,7 @@ import dayjs from "dayjs";
 import styles from "./index.module.scss";
 
 interface IProps {
-  post?: PostDetail;
+  post: PostDetail;
   repo: string;
 }
 const RightTopIcon = () => (

@@ -4,7 +4,7 @@ import React from "react";
  * @Author: i1mT
  * @Date: 2022-10-22 21:22:25
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-25 23:47:47
+ * @LastEditTime: 2022-10-26 10:09:03
  * @Description:
  * @FilePath: \YuqueBlog\src\types\blog.d.ts
  */
@@ -90,6 +90,8 @@ export interface PostDetail {
   title: string;
   description: string;
   body_html: string;
+  body_lake: string;
+  body_draft: string;
   likes_count: number;
   comments_count: number;
   content_updated_at: string;
