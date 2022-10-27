@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-18 23:09:57
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 22:50:15
+ * @LastEditTime: 2022-10-28 01:05:35
  * @Description: Home
  * @FilePath: \YuqueBlog\src\pages\Home\index.tsx
  */
@@ -64,7 +64,11 @@ export default function Home() {
   };
   useEffect(() => {
     updateHomeHeader();
-  }, [blogInfo, params]);
+  }, [blogInfo]);
+  useEffect(() => {
+    if (Object.keys(params).length) return;
+    updateHomeHeader();
+  }, [params]);
   const titleWidth = useMemo(() => {
     if (blogInfo?.settings.title === globalState?.title) return 450;
     const maxWidth = 0.7 * window.document.documentElement.scrollWidth;

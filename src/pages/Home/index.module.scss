@@ -12,7 +12,9 @@
     overflow-x: hidden;
     height: calc(100vh - 64px);
   }
+
   .cover {
+    transition: height 0.2s ease-in-out;
     overflow: hidden;
     position: relative;
     .content {
@@ -53,6 +55,11 @@
       width: 100vw;
       min-height: 35vh;
     }
+  }
+  .main,
+  .content,
+  .title {
+    transition: width 0.2s ease-in-out;
   }
   .main {
     background-color: $black12;

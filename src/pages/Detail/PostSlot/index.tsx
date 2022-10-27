@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-25 09:17:48
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 23:06:33
+ * @LastEditTime: 2022-10-28 01:07:12
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Detail\PostSlot\index.tsx
  */
@@ -11,6 +11,7 @@ import RightTopIcon from "@/common/icon/rightTop";
 import { PostDetail } from "@/types/blog";
 import dayjs from "dayjs";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 import styles from "./index.module.scss";
 
 interface IProps {
@@ -64,14 +65,10 @@ export default function PostSlot(props: IProps) {
           ) : null}
         </div>
         <div className={styles.book}>
-          <a
-            href={`https://www.yuque.com/iimt/${book.slug}`}
-            target="_blank"
-            className={styles.item}
-          >
+          <Link to={`/books/${book.slug}`} className={styles.item}>
             <BookIcon />
             {book.name}
-          </a>
+          </Link>
         </div>
         <div className={styles.yuque}>
           <a

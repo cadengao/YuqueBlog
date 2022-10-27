@@ -2,15 +2,16 @@
  * @Author: i1mT
  * @Date: 2022-10-23 13:25:36
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 22:59:31
+ * @LastEditTime: 2022-10-28 01:08:29
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Post\index.tsx
  */
 import fetch from "@/request/fetch";
-import { Post as IPost } from "@/types/blog";
+import { Book, Post as IPost } from "@/types/blog";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useParams } from "react-router-dom";
+import { useOutletContext, useParams } from "react-router-dom";
+import { IGlobalContext } from "../Home";
 import PostCard from "./components/PostCard";
 import styles from "./index.module.scss";
 
@@ -19,7 +20,9 @@ const PAGE_CAPACITY = 10;
 export default function Post() {
   const { repo } = useParams();
   const [page, setPage] = useState(1);
-  const [posts, setPosts] = useState<IPost[]>();
+  const [globalState, setGlobalState] = useOutletContext<IGlobalContext>();
+  const [posts, setPosts] = useState<IPost[]>([]);
+  const [repos, setRepos] = useState<Book[]>([]);
   const { t } = useTranslation();
 
   const getAllPosts = () => {
@@ -34,8 +37,25 @@ export default function Post() {
     });
   };
 
+  const updateCurrentRepo = () => {
+    fetch.get("/repo/all").then((res) => {
+      const repos: Book[] = res.data?.data || [];
+      setRepos(repos);
+      if (!repo) return;
+      const curRepo = repos.find((r) => r.slug === repo);
+      if (!curRepo) return;
+      setGlobalState((s) => ({
+        ...(s || {}),
+        title: curRepo.name,
+        subtitle: curRepo.description,
+        slot: null,
+      }));
+    });
+  };
+
   useEffect(() => {
     getAllPosts();
+    updateCurrentRepo();
   }, [repo]);
 
   const renderedPosts = useMemo(() => {

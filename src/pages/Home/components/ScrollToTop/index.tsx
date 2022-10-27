@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-23 15:06:14
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-25 23:41:53
+ * @LastEditTime: 2022-10-28 00:59:33
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Home\components\ScrollToTop\index.tsx
  */
@@ -28,6 +28,33 @@ const Top = () => (
     ></path>
   </svg>
 );
+
+export const toTop = () => {
+  // 开始时间
+  const beginTime = Date.now();
+  // 初始位置
+  const scrollEl = document.querySelector("#scrollEl");
+  if (!scrollEl) return;
+  const beginValue = scrollEl.scrollTop;
+  const cubic = (value: number) => Math.pow(value, 3);
+
+  const easeInOutCubic = (value: number) =>
+    value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2;
+  const rAF = window.requestAnimationFrame || ((func) => setTimeout(func, 16));
+  const frameFunc = () => {
+    // 进度，500ms 内将页面滚动到顶部
+    const progress = (Date.now() - beginTime) / 500;
+    if (progress < 1) {
+      // 根据进度修改 scrollTop 的值
+      scrollEl.scrollTop = beginValue * (1 - easeInOutCubic(progress));
+      rAF(frameFunc);
+    } else {
+      scrollEl.scrollTop = 0;
+    }
+  };
+  rAF(frameFunc);
+};
+
 export default function ScrollToTop() {
   const [show, setShow] = useState(false);
 
@@ -38,33 +65,6 @@ export default function ScrollToTop() {
     if (scrollEl.scrollTop > MAX_SCROLL_HEIGHT) {
       setShow(true);
     } else setShow(false);
-  };
-
-  const toTop = () => {
-    // 开始时间
-    const beginTime = Date.now();
-    // 初始位置
-    const scrollEl = document.querySelector("#scrollEl");
-    if (!scrollEl) return;
-    const beginValue = scrollEl.scrollTop;
-    const cubic = (value: number) => Math.pow(value, 3);
-
-    const easeInOutCubic = (value: number) =>
-      value < 0.5 ? cubic(value * 2) / 2 : 1 - cubic((1 - value) * 2) / 2;
-    const rAF =
-      window.requestAnimationFrame || ((func) => setTimeout(func, 16));
-    const frameFunc = () => {
-      // 进度，500ms 内将页面滚动到顶部
-      const progress = (Date.now() - beginTime) / 500;
-      if (progress < 1) {
-        // 根据进度修改 scrollTop 的值
-        scrollEl.scrollTop = beginValue * (1 - easeInOutCubic(progress));
-        rAF(frameFunc);
-      } else {
-        scrollEl.scrollTop = 0;
-      }
-    };
-    rAF(frameFunc);
   };
 
   useEffect(() => {

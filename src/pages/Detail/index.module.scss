@@ -1,5 +1,7 @@
+@import "/src/const/styles.scss";
 .iframe {
   width: 100%;
   height: 100%;
   border: none;
+  padding-top: $amount3;
 }
