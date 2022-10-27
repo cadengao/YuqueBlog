@@ -2,13 +2,14 @@
  * @Author: i1mT
  * @Date: 2022-10-23 13:25:36
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-25 09:06:17
+ * @LastEditTime: 2022-10-27 22:59:31
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Post\index.tsx
  */
 import fetch from "@/request/fetch";
 import { Post as IPost } from "@/types/blog";
 import { useEffect, useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import PostCard from "./components/PostCard";
 import styles from "./index.module.scss";
@@ -19,6 +20,7 @@ export default function Post() {
   const { repo } = useParams();
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState<IPost[]>();
+  const { t } = useTranslation();
 
   const getAllPosts = () => {
     let path = "/doc/all";
@@ -56,7 +58,7 @@ export default function Post() {
           <PostCard key={post.id} repo={post.repo} index={index} post={post} />
         ))
       ) : (
-        <div className={styles.empty}>这个人很懒，还什么都没有写</div>
+        <div className={styles.empty}>{t("post.empty")}</div>
       )}
       {hasMore ? (
         <div className={styles.more} onClick={() => setPage((p) => p + 1)}>

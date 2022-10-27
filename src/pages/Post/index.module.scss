@@ -1,5 +1,6 @@
 @import "/src/const/styles.scss";
 .posts {
+  margin-top: $intervalLarge;
   .empty {
     font-size: $fontSizeSmall;
     color: $black5;

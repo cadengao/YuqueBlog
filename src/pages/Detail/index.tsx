@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-24 09:14:33
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 09:58:01
+ * @LastEditTime: 2022-10-27 22:33:32
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Detail\index.tsx
  */
@@ -16,8 +16,9 @@ import styles from "./index.module.scss";
 import { IGlobalContext } from "../Home";
 
 const getPostDetailMainWidth = () => {
-  if (window.document.documentElement.scrollWidth < 1024) return 100;
-  return 85;
+  if (window.document.documentElement.scrollWidth < 1024) return 95;
+  if (window.document.documentElement.scrollWidth < 750) return 100;
+  return 70;
 };
 
 export default function Detail() {

@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-18 23:09:57
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 10:06:38
+ * @LastEditTime: 2022-10-27 22:50:15
  * @Description: Home
  * @FilePath: \YuqueBlog\src\pages\Home\index.tsx
  */
@@ -15,6 +15,7 @@ import styles from "./index.module.scss";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import ScrollToTop from "./components/ScrollToTop";
 import { GlobalState, Lang } from "@/types/blog";
+import { useTranslation } from "react-i18next";
 
 export type IGlobalContext = [
   GlobalState,
@@ -25,6 +26,7 @@ export const GlobalContext = createContext<IGlobalContext>([] as any);
 export default function Home() {
   const blogInfo = useContext(BlogInfoContext);
   const params = useParams();
+  const { i18n } = useTranslation();
   const [globalState, setGlobalState] = useState<GlobalState>({
     lang: (localStorage.getItem("iimt_blog_lang") as Lang) || Lang.en,
     mainWidth: 70,
@@ -34,7 +36,9 @@ export default function Home() {
   });
 
   useEffect(() => {
+    // 保存选择的语言
     localStorage.setItem("iimt_blog_lang", globalState.lang);
+    i18n.changeLanguage(globalState.lang);
   }, [globalState.lang]);
 
   const updateHomeHeader = () => {
