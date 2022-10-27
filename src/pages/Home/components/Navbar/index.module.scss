@@ -50,11 +50,25 @@
     }
     .switch {
       cursor: pointer;
+      font-size: $fontSizeSmaller;
+      border: 0.5px solid $black4;
+      height: 14px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border-radius: 2px;
+      position: relative;
+      top: 2px;
+      margin-left: $amount2;
+
       .switchOption {
-        background-color: $black6;
+        padding: 0 $amount1;
+        padding-bottom: 1px;
+        background-color: $black12;
       }
       .switchActive {
-        background-color: $black12;
+        color: $black12;
+        background-color: $black4;
       }
     }
   }

@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-24 09:14:33
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 00:31:48
+ * @LastEditTime: 2022-10-27 09:58:01
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Detail\index.tsx
  */
@@ -14,6 +14,11 @@ import { useOutletContext, useParams } from "react-router-dom";
 import PostSlot from "./PostSlot";
 import styles from "./index.module.scss";
 import { IGlobalContext } from "../Home";
+
+const getPostDetailMainWidth = () => {
+  if (window.document.documentElement.scrollWidth < 1024) return 100;
+  return 85;
+};
 
 export default function Detail() {
   const { doc, repo } = useParams();
@@ -35,8 +40,10 @@ export default function Detail() {
       ...state,
       title: postDetail?.title,
       subtitle: "",
+      mainWidth: getPostDetailMainWidth(),
+      coverHeight: 350,
       cover: postDetail?.cover,
-      slot: <PostSlot post={postDetail} repo={repo} />,
+      slot: <PostSlot post={postDetail} />,
     }));
   }, [postDetail, repo]);
   useEffect(() => {

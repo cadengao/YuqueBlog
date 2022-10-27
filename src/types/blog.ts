@@ -4,7 +4,7 @@ import React from "react";
  * @Author: i1mT
  * @Date: 2022-10-22 21:22:25
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 00:45:47
+ * @LastEditTime: 2022-10-27 09:57:40
  * @Description:
  * @FilePath: \YuqueBlog\src\types\blog.ts
  */
@@ -85,6 +85,8 @@ export interface GlobalState {
   cover: string;
   slot?: React.ReactNode;
   lang: Lang;
+  mainWidth: number;
+  coverHeight: number;
 }
 
 export interface PostDetail {
@@ -92,6 +94,7 @@ export interface PostDetail {
   body: string;
   slug: string;
   title: string;
+  book: Book;
   description: string;
   body_html: string;
   body_lake: string;

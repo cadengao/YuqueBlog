@@ -13,14 +13,10 @@
     height: calc(100vh - 64px);
   }
   .cover {
-    height: 470px;
     overflow: hidden;
     position: relative;
     .content {
       position: absolute;
-      width: 70vw;
-      left: 0;
-      margin-left: 15vw;
       color: $black12;
       top: $amount5;
       .title {
@@ -45,7 +41,7 @@
           &:first-of-type {
             margin-left: 0;
           }
-          
+
           img {
             width: 100%;
             height: 100%;
@@ -60,13 +56,9 @@
   }
   .main {
     background-color: $black12;
-    width: 70vw;
     box-sizing: border-box;
     min-height: $amount9;
     padding: $intervalLarge;
     margin: 0 auto;
-    position: relative;
-    top: -100px;
-    // border-radius: 5px;
   }
 }

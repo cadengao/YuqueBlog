@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-19 09:34:51
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 00:45:09
+ * @LastEditTime: 2022-10-27 09:12:33
  * @Description:
  * @FilePath: \YuqueBlog\src\pages\Home\components\Navbar\index.tsx
  */
@@ -45,6 +45,22 @@ export default function Navbar() {
         <Link to="/">iimT's Blog</Link>
       </div>
       <div className={styles.right}>
+        <div className={styles.switch} onClick={handleToggleLang}>
+          <span
+            className={`${styles.switchOption} ${
+              globalState.lang === Lang.en ? styles.switchActive : ""
+            }`}
+          >
+            {Lang.en}
+          </span>
+          <span
+            className={`${styles.switchOption} ${
+              globalState.lang === Lang.cn ? styles.switchActive : ""
+            }`}
+          >
+            {Lang.cn}
+          </span>
+        </div>
         {routes.reverse().map((r, index) => {
           const Hover = r.hoverElement;
           if (Hover) {
@@ -61,22 +77,6 @@ export default function Navbar() {
             </div>
           );
         })}
-        <div className={styles.switch} onClick={handleToggleLang}>
-          <span
-            className={`${styles.switchOption} ${
-              globalState.lang === Lang.en ? styles.switchActive : ""
-            }`}
-          >
-            en
-          </span>
-          <span
-            className={`${styles.switchOption} ${
-              globalState.lang === Lang.cn ? styles.switchActive : ""
-            }`}
-          >
-            cn
-          </span>
-        </div>
       </div>
     </div>
   );

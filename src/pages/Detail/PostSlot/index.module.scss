@@ -11,23 +11,24 @@
     margin-top: $amount1;
   }
   .item {
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 2px;
     padding: 0 $amount1;
     margin-left: $amount1;
+    letter-spacing: 1px;
     &:first-child {
       margin-left: 0;
     }
   }
-  .statics {
-    margin-top: $amount1;
+  .statistics,
+  .book,
+  .yuque {
+    margin-top: 6px;
   }
   .yuque {
-    margin-top: $amount1;
-
     a {
       color: #fff;
-      background: rgba(255, 255, 255, .2);
+      background: rgba(255, 255, 255, 0.2);
       border-radius: 2px;
       padding: 0 $amount1;
       display: inline-flex;
@@ -38,6 +39,17 @@
         height: 18px;
       }
     }
-    
+  }
+  .book {
+    a {
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+    }
+    svg {
+      margin-right: 2px;
+      width: 16px;
+      height: 16px;
+    }
   }
 }

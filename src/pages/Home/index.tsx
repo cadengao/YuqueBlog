@@ -2,7 +2,7 @@
  * @Author: i1mT
  * @Date: 2022-10-18 23:09:57
  * @LastEditors: i1mT
- * @LastEditTime: 2022-10-27 00:39:14
+ * @LastEditTime: 2022-10-27 10:06:38
  * @Description: Home
  * @FilePath: \YuqueBlog\src\pages\Home\index.tsx
  */
@@ -26,10 +26,16 @@ export default function Home() {
   const blogInfo = useContext(BlogInfoContext);
   const params = useParams();
   const [globalState, setGlobalState] = useState<GlobalState>({
-    lang: Lang.en,
+    lang: (localStorage.getItem("iimt_blog_lang") as Lang) || Lang.en,
+    mainWidth: 70,
+    coverHeight: 450,
     cover:
       "https://static.wixstatic.com/media/0b340f_b3e8595169574d4098fbe2dee7b2fda1~mv2.jpg/v1/fill/w_2372,h_933,al_c,q_90,enc_auto/0b340f_b3e8595169574d4098fbe2dee7b2fda1~mv2.jpg",
   });
+
+  useEffect(() => {
+    localStorage.setItem("iimt_blog_lang", globalState.lang);
+  }, [globalState.lang]);
 
   const updateHomeHeader = () => {
     setGlobalState((state) => ({
@@ -37,6 +43,8 @@ export default function Home() {
       title: blogInfo?.settings.title,
       subtitle: blogInfo?.settings.sub_title,
       cover: blogInfo?.settings.cover!,
+      mainWidth: 70,
+      coverHeight: 450,
       slot: (
         <div className={styles.links}>
           {blogInfo?.settings.social_links.map((link, index) => (
@@ -63,8 +71,17 @@ export default function Home() {
       <div className={styles.home}>
         <NavBar />
         <div className={styles.page} id="scrollEl">
-          <div className={styles.cover}>
-            <div className={styles.content}>
+          <div
+            className={styles.cover}
+            style={{ height: `${globalState.coverHeight}px` }}
+          >
+            <div
+              className={styles.content}
+              style={{
+                width: `${globalState.mainWidth}vw`,
+                marginLeft: `${(100 - globalState.mainWidth) / 2}vw`,
+              }}
+            >
               <div
                 className={styles.title}
                 style={{
@@ -89,7 +106,10 @@ export default function Home() {
               }
             />
           </div>
-          <div className={styles.main}>
+          <div
+            className={styles.main}
+            style={{ width: `${globalState.mainWidth}vw` }}
+          >
             <Outlet context={[globalState, setGlobalState]} />
           </div>
           <Footer />
